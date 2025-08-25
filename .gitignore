@@ -1,0 +1,33 @@
+# Dépendances
+node_modules/
+
+# Build Vite
+dist/
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environnements
+.env
+.env.local
+.env.*.local
+
+# Système
+.DS_Store
+Thumbs.db
+
+# IDE / éditeurs
+.idea/
+.vscode/
+*.sw?
+
+# Netlify
+.netlify/
+
+# Tests / coverage
+coverage/

@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   🎨 Design tokens
+   ========================= */
+:root {
+  --brand: #1f3a8a;
+  /* Bleu profond Piliarium */
+}
+
+/* =========================
+   🌙 Mode sombre
+   ========================= */
+html.dark {
+  color-scheme: dark;
+}
+
+/* =========================
+   ✨ Styles globaux
+   ========================= */
+body {
+  @apply antialiased bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-gray-800 dark:text-gray-100;
+}
+
+a {
+  @apply text-brand hover:underline;
+}
+
+button {
+  @apply focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+}
