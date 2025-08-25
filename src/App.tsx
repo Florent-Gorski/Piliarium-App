@@ -16,7 +16,7 @@ import
 
 // === Pages à créer / déjà présentes ===
 import { Guides } from './pages/Guides';
-import { FiscaliteCantons } from './pages/FiscaliteCantons';
+import { FiscaliteCantons } from './pages/FiscliteCantons';
 import { ComparateurPage } from './pages/ComparateurPage';
 import { EtudeCas } from './pages/EtudeCas';
 import { QuizSelection } from './pages/QuizSelection';
