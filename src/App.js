@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Home, BookOpen, Map, BarChart2, Briefcase, HelpCircle, Shield, Moon, Sun, Menu, X, } from 'lucide-react';
 // === Pages à créer / déjà présentes ===
 import { Guides } from './pages/Guides';
-import { FiscaliteCantons } from './pages/FiscaliteCantons';
+import { FiscaliteCantons } from './pages/FiscliteCantons';
 import { ComparateurPage } from './pages/ComparateurPage';
 import { EtudeCas } from './pages/EtudeCas';
 import { QuizSelection } from './pages/QuizSelection';
