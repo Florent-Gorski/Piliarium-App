@@ -3,7 +3,7 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  // ✅ CORRECTION : Ajout de la stratégie pour le mode sombre.
+  // ✅ CORRECTION : Activation de la stratégie de mode sombre via une classe.
   darkMode: "class",
 
   content: [

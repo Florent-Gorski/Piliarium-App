@@ -1,15 +1,10 @@
-// @filename: src/main.tsx
-
-import React from "react";
-import ReactDOM from "react-dom/client";
+// src/main.tsx
+import * as React from "react";                // ✅ évite l’erreur TS1259 sans esModuleInterop
+import { createRoot } from "react-dom/client"; // ✅ pas d'import par défaut (TS1192)
 import App from "./App";
-// ✅ CORRECTION : Chemin d'importation corrigé pour être relatif au dossier src.
 import "./index.css";
 
-/**
- * Applique le thème au niveau <html> (classe 'dark' ou 'light')
- * + persiste dans localStorage + synchronise entre onglets.
- */
+/** Applique le thème au niveau <html> + persiste */
 export function applyTheme(theme: "dark" | "light")
 {
   const root = document.documentElement;
@@ -18,31 +13,35 @@ export function applyTheme(theme: "dark" | "light")
   localStorage.setItem("theme", theme);
 }
 
-// 1) Déterminer le thème initial avant le rendu React (évite le flash)
+// Déterminer le thème initial avant le rendu (évite le flash)
 (function initTheme()
 {
-  const stored = (localStorage.getItem("theme") as "dark" | "light" | null);
-  const prefersDark = window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
-  applyTheme(stored ?? (prefersDark ? "dark" : "light"));
+  try {
+    const saved = localStorage.getItem("theme") as "dark" | "light" | null;
+    const prefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(saved ?? (prefersDark ? "dark" : "light"));
+  } catch {
+    /* noop */
+  }
 })();
 
-// 2) Synchroniser si le thème change dans un autre onglet
+// Synchroniser si le thème change dans un autre onglet
 window.addEventListener("storage", (e) =>
 {
   if (e.key === "theme" && (e.newValue === "dark" || e.newValue === "light")) {
-    applyTheme(e.newValue as "dark" | "light");
+    applyTheme(e.newValue);
   }
 });
 
-// 3) API globale pour basculer le thème depuis App.tsx
+// API globale pour le toggle depuis App.tsx
 (window as any).__toggleTheme = function ()
 {
   const isDark = document.documentElement.classList.contains("dark");
   applyTheme(isDark ? "light" : "dark");
 };
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
