@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+
 /**
  * Applique le thème au niveau <html> (classe 'dark' ou 'light')
  * + persiste dans localStorage + synchronise entre onglets.
