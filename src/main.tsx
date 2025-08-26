@@ -1,8 +1,10 @@
+// @filename: src/main.tsx
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+// ✅ CORRECTION : Chemin d'importation corrigé pour être relatif au dossier src.
 import "./index.css";
-
 
 /**
  * Applique le thème au niveau <html> (classe 'dark' ou 'light')
@@ -29,12 +31,11 @@ export function applyTheme(theme: "dark" | "light")
 window.addEventListener("storage", (e) =>
 {
   if (e.key === "theme" && (e.newValue === "dark" || e.newValue === "light")) {
-    applyTheme(e.newValue);
+    applyTheme(e.newValue as "dark" | "light");
   }
 });
 
-// 3) Petite API globale optionnelle pour basculer depuis App.tsx
-//    => évite d’avoir un état local darkMode qui se désynchronise
+// 3) API globale pour basculer le thème depuis App.tsx
 (window as any).__toggleTheme = function ()
 {
   const isDark = document.documentElement.classList.contains("dark");

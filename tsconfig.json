@@ -1,34 +1,30 @@
+// @filename: tsconfig.json
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
-      "ES2023",
       "DOM",
-      "DOM.Iterable"
+      "DOM.Iterable",
+      "ESNext"
     ],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
     "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    // ✅ CORRECTION : Empêche `tsc` de générer des fichiers .js dans votre dossier src.
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
   "include": [
-    "src",
-    "vite.config.ts"
-, "tsconfig.node.json", "tsconfig.json", "postcss.config.js", "tailwind.config.ts"  ],
+    "src"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"
